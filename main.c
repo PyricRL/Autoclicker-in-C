@@ -69,25 +69,16 @@ int main(int argc, char** args) {
     } else {
         printf("SDL_Init success\n");
     }
-    if (TTF_Init() == -1) {
-        printf("TTF_Init failed: %s\n", TTF_GetError());
-        return 1;
-    } else {
-        printf("TTF_Init success\n");
-    }
+    TTF_Init();
 
     renderScreen();
-
-    TTF_Font *font = TTF_OpenFont("font.ttf", 24);
-    if (font == NULL) {
-        printf("Failed to load font: %s\n", TTF_GetError());
-        return 1;
-    }
     //Sleep(5000);
 
-    btn = createButton(100, 100, 200, 50, "Click Me", 1, (SDL_Color){255, 0, 0, 255}, (SDL_Color){100, 0, 0, 255}, (SDL_Color){0, 0, 0, 255}, (SDL_Color){255, 255, 255, 255}, font);
-
-    printf("Starting main loop...\n");
+    btn = createButton(100, 100, 200, 50, 1, 
+        (SDL_Color){255, 0, 0, 255}, 
+        (SDL_Color){100, 0, 0, 255}, 
+        (SDL_Color){0, 0, 0, 255},
+        "Hi");
 
     while (running) {
         renderItemsToScreen();
@@ -101,8 +92,6 @@ int main(int argc, char** args) {
         }
         keyPress();
     }
-
-    TTF_CloseFont(font);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     TTF_Quit();

@@ -1,6 +1,7 @@
 {
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
-        "button.h": "c"
+        "button.h": "c",
+        "sdl.h": "c"
     }
 }

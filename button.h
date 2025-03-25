@@ -9,21 +9,18 @@
 typedef struct {
     int x, y;
     int width, height;
-    char *text;
     int pressed;
     SDL_Color baseColor;
     SDL_Color hoverColor;
     SDL_Color clickColor;
-    SDL_Color fontColor;
-    TTF_Font *font;
+    char text[];
 } Button;
 
 /* Function to create and assign a button to a variable */
 
 Button createButton(int x, int y, int width, int height, 
-    char *text, int pressed, 
-    SDL_Color baseColor, SDL_Color hoverColor, SDL_Color borderColor, 
-    SDL_Color fontColor, TTF_Font *font);
+    int pressed, 
+    SDL_Color baseColor, SDL_Color hoverColor, SDL_Color borderColor, const char *text);
 
 /* Function to render button to screen */
 void renderButton(Button *btn, SDL_Renderer *renderer);
